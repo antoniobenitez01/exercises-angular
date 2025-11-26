@@ -1,12 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Personaje } from '../interfaces/personaje';
 
 @Component({
   selector: 'dbz-add-personaje',
-  templateUrl: 'addpersonaje.html'
+  templateUrl: 'addpersonaje.html',
+  standalone: false
 })
 
-export class AddPersonajeComponent implements OnInit {
-  constructor() { }
+export class AddPersonajeComponent {
 
-  ngOnInit() { }
+  @Output()
+  public onNewPersonaje: EventEmitter<Personaje> = new EventEmitter();
+
+  public personaje: Personaje = {
+    nombre: '',
+    fuerza: 0
+  }
+
+  public addPersonaje(): void{
+    console.log(this.personaje);
+    if (this.personaje.nombre.length === 0 ) return;
+
+    this.onNewPersonaje.emit(this.personaje);
+  }
 }
