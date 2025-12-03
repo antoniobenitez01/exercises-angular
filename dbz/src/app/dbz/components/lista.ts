@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Personaje } from '../interfaces/personaje';
 import { Input } from '@angular/core';
 
@@ -9,9 +9,14 @@ import { Input } from '@angular/core';
 })
 
 export class ListaComponent {
+
+  @Output()
+  public onDeletePersonaje: EventEmitter<string> = new EventEmitter();
+
   @Input('miLista')
-  public listaPersonajes : Personaje[] = [{
-    nombre : "Trunks",
-    fuerza : 7000
-  }]
+  public listaPersonajes : Personaje[] = []
+
+  public eliminarPersonaje(id : string): void{
+    this.onDeletePersonaje.emit(id);
+  }
 }

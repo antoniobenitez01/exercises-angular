@@ -5,15 +5,18 @@
   let esUltimo = $last;
   let esImpar=$odd;
   let esPrimero=$first){
-    <li class="list-group-item" [ngClass]="{
+    <li class="list-group-item d-flex justify-content-between aling-items-center" [ngClass]="{
       'list-group-item-primary': esPrimero,
       'list-group-item-secondary': esImpar,
       'list-group-item-danger': esUltimo
     }">
-      <span>{{ personaje.nombre }} - </span>
-      <strong>Fuerza: </strong>
-      <span>{{ personaje.fuerza }}</span>
-      <span> - Índice: {{ i }} - Es impar: {{ esImpar }} - Es último: {{ esUltimo }}</span>
+      <div>
+        <span>{{ personaje.nombre }} - </span>
+        <strong>Fuerza: </strong>
+        <span>{{ personaje.fuerza }}</span>
+        <span> - <strong>Índice:</strong> {{ i }}<br><strong>Es impar:</strong> {{ esImpar }} - <strong>Es último:</strong> {{ esUltimo }}</span>
+      </div>
+      <button (click)="eliminarPersonaje(personaje.id)" class="btn btn-danger">X</button>
     </li>
   }
 </ul>

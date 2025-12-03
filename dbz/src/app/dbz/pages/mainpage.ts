@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Personaje } from '../interfaces/personaje';
+import { DBZService } from '../services/dbz-service';
 
 @Component({
   selector: 'app-dbz-mainpage',
@@ -8,24 +8,6 @@ import { Personaje } from '../interfaces/personaje';
 })
 
 export class MainPageComponent {
-  public personajes: Personaje[] = [{
-    nombre: "Krillin",
-    fuerza : 500
-  },{
-    nombre: "Goku",
-    fuerza : 10000
-  },{
-    nombre: "Vegeta",
-    fuerza : 5000
-  },{
-    nombre: "Trunks",
-    fuerza : 7000
-  },{
-    nombre: "Muten Roshi",
-    fuerza : 1000
-  }]
-
-  public onNewPersonaje(personaje: Personaje): void{
-    this.personajes.push(personaje);
-  }
+  // DBZService debería ser privado - Utilizando GETTERS
+  constructor(public dbzService : DBZService){}
 }

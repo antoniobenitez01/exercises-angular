@@ -13,6 +13,7 @@ export class AddPersonajeComponent {
   public onNewPersonaje: EventEmitter<Personaje> = new EventEmitter();
 
   public personaje: Personaje = {
+    id : '',
     nombre: '',
     fuerza: 0
   }
@@ -22,5 +23,11 @@ export class AddPersonajeComponent {
     if (this.personaje.nombre.length === 0 ) return;
 
     this.onNewPersonaje.emit(this.personaje);
+
+    this.personaje = {
+      id : '',
+      nombre :'',
+      fuerza : 0
+    };
   }
 }
