@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 export class DBZService {
   constructor() {}
 
-  public personajes: Personaje[] = [{
+  private personajes: Personaje[] = [{
     id: uuid(),
     nombre: "Krillin",
     fuerza : 500
@@ -28,11 +28,14 @@ export class DBZService {
     fuerza : 1000
   }]
 
-  public onNewPersonaje(personaje: Personaje): void{
+  public getPersonajes(){
+    return this.personajes;
+  }
+
+  public addPersonaje(personaje: Personaje): void{
     //const newPersonaje : Personaje = { id: uuid(), ...personaje};
-    const newPersonaje : Personaje = {...personaje};
-    newPersonaje.id = uuid();
-    this.personajes.push(newPersonaje);
+    personaje.id = uuid();
+    this.personajes.push(personaje);
   }
   /*
   public onDeletePersonaje(index: number): void{
@@ -40,7 +43,7 @@ export class DBZService {
     this.personajes.splice(index,1);
   }*/
 
-  public onDeletePersonaje( id: string){
+  public deletePersonajeById( id: string){
     this.personajes = this.personajes.filter (personaje => personaje.id !== id);
   }
 }

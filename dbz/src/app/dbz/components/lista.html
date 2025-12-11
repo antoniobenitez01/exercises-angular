@@ -1,22 +1,26 @@
 <h4>Listado</h4>
 <ul class="list-group">
-  @for (personaje of listaPersonajes; track $index;
-  let i = $index;
-  let esUltimo = $last;
-  let esImpar=$odd;
-  let esPrimero=$first){
-    <li class="list-group-item d-flex justify-content-between aling-items-center" [ngClass]="{
-      'list-group-item-primary': esPrimero,
-      'list-group-item-secondary': esImpar,
-      'list-group-item-danger': esUltimo
-    }">
-      <div>
-        <span>{{ personaje.nombre }} - </span>
-        <strong>Fuerza: </strong>
-        <span>{{ personaje.fuerza }}</span>
-        <span> - <strong>Índice:</strong> {{ i }}<br><strong>Es impar:</strong> {{ esImpar }} - <strong>Es último:</strong> {{ esUltimo }}</span>
-      </div>
-      <button (click)="eliminarPersonaje(personaje.id)" class="btn btn-danger">X</button>
-    </li>
+  @if(listaPersonajes.length > 0){
+    @for (personaje of listaPersonajes; track $index;
+    let i = $index;
+    let esUltimo = $last;
+    let esImpar=$odd;
+    let esPrimero=$first){
+      <li class="list-group-item d-flex justify-content-between aling-items-center" [ngClass]="{
+        'list-group-item-primary': esPrimero,
+        'list-group-item-secondary': esImpar,
+        'list-group-item-danger': esUltimo
+      }">
+        <div>
+          <span>{{ personaje.nombre }} - </span>
+          <strong>Fuerza: </strong>
+          <span>{{ personaje.fuerza }}</span>
+          <span> - <strong>Índice:</strong> {{ i }}<br><strong>Es impar:</strong> {{ esImpar }} - <strong>Es último:</strong> {{ esUltimo }}</span>
+        </div>
+        <button (click)="eliminarPersonaje(personaje.id)" class="btn btn-danger">X</button>
+      </li>
+    }
+  }@else {
+    <p>No hay ningún Personaje registrado.</p>
   }
 </ul>

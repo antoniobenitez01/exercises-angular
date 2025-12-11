@@ -1,12 +1,12 @@
-<h1>DBZ Personajes</h1>
-<hr>
+<h1 style="margin-top:7vh">DRAGON BALL Z - Personajes</h1>
+<hr style="margin-bottom:5vh">
 
 <div class="row">
   <div class="col">
-    <dbz-lista (onDeletePersonaje)="dbzService.onDeletePersonaje($event)" [miLista]="dbzService.personajes"></dbz-lista>
+    <dbz-lista (onDeletePersonaje)="onDeletePersonaje($event)" [miLista]="personajes"></dbz-lista>
   </div>
   <div class="col">
-    <dbz-add-personaje (onNewPersonaje)="dbzService.onNewPersonaje($event)"></dbz-add-personaje>
+    <dbz-add-personaje (onNewPersonaje)="onAddPersonaje($event)"></dbz-add-personaje>
   </div>
 </div>
 
